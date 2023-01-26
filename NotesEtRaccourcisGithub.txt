@@ -1,0 +1,221 @@
+SOURCE : 
+Apprendre Git et Github Rapidement & Simplement - Tutoriel Débutant
+	Dgeo Dev
+https://www.youtube.com/watch?v=lhiSnzrvG48
+
+
+[[Entrer les lignes de commandes dans un terminal
+ Git Bash]]
+*Dans un terminal terminal (en Git Bash) ou dans le terminal de visual code (en Git Bash) ou dans le terminal de votre choix...rendu là...pouvu que vous soyez à l'aise.
+
+
+==>PROCÉDURE UTILISATION Github
+
+Vérifier si connecté à son compte Github :
+git config --list
+
+Si non connecté :
+git config --global user.name <nom utilisateur>
+git config --global user.email <adresse@domaine.ext>
+
+Créer dossier vide sur Github :
+ex : Vince2210001/Tests
+
+Créer dossier vide sur ordi (ex c: C://github/Testsv2) :
+cd C://github
+mkdir Testsv2
+
+Aller dans le dossier via le terminal :
+cd Testsv2
+
+Déclarer le dossier comme branche main :
+git init
+
+***Possibilité de faire un "git status" pour constater l'état du dossier.
+
+Ouvrir Visual Code pour créer des fichiers dans le dossier Testsv2 afin de les "puscher" sur Github dans le dossier Tests :
+code .
+
+EXEMPLE DE FICHIERS À CRÉER POUR L'EXEMPLE :
+fichier index.html (avec les balises de base à l'intérieur (<!DOCTYPE html>))
+
+AJOUTER LE FICHIER SUR Github
+
+Ajouter le fichier dans le git sur l'ordi :
+git add .
+
+Commettre le changement dans le git sur l'ordi :
+git commit -m "premier commit"
+
+***Possibilité de faire un "git status" pour constater l'état du dossier.
+***Possibilité de faire un "git log" pour constater que le commit a eu lieu. (Pour quitter le log et revenir au terminal git Bash, appuyez sur la touche "q")
+
+Ajouter le fichier gitignore :
+touch .gitignore
+*un fichier vierge apparait dans l'arborescence du projet dans Visual Code
+	On peut y ajouter les lignes suivantes:
+/node_module
+/nom_dun_dossier_a_ne_pas_partager_sur_github
+*.txt --> si on souhaite qu'aucun fichier texte ne soit "pushé".
+mes_info_confidentielles.txt --> si on souhaite cibler un fichier en particulier à ne pas "pusher".
+
+Choisir la branche main :
+git branch - M main
+
+Pointer le repository où "pusher" sur mon profile Github :
+git remote add origin https://github.com/Vince2210001/Tests.git
+***Attention ici, il peut aussi y avoir aussi le mode ssh <it@github.com/Vince2210001/Tests.git>
+***SI PROBLÈMES avec l'origine qui est déjà assignée, possible de faire : 
+	git remote remove origin
+	git remote remove github
+	git remote add origin https://github.com/Vince2210001/Tests.git
+
+
+"Pusher" le commit dans le dossier Github en ligne :
+git push -u origin main
+
+
+MODIFIER :
+
+git add .
+
+git commit -m "explication modification"
+
+git push origin main
+
+
+CRÉATION DE BRANCHES
+
+CRÉER UNE BRANCHE SUR SON ORDI :
+
+Créer la branche du nom de votre choix :
+ex : git branch menu
+
+Basculer sur la branche menu :
+git chexkout menu
+
+
+FAIRE DES MODIFICATIONS SUR LE FICHIER index.html :
+
+Ajouter les modification au Git sur l'ordi :
+git add .
+
+Commettre les modification :
+git commit -m "ajout menu navigation"
+
+***À ce point, on peut faire un push ou rester ici et continuer de modifier les fichiers.
+
+"Pusher" le commit vers le fichier qui se trouve sur la branche menu sur l'ordi :
+git push
+
+
+MERGE
+
+Aller sur la branche main :
+git checkout main
+
+Faire le "merge" de la branche menu:
+git merge menu
+
+"Pusher" le merge sur la branche main (sur l'ordi et en ligne sur Github) :
+git push origin main
+
+
+CRÉER UNE BRANCHE SUR Github :
+
+??? :
+git checkout menu
+
+Créer la branche de votre choix : 
+ex : git branch dev
+
+Aller sur la branche dev :
+git checkout dev
+
+
+APPORTER DES MODIFICATION AUX FICHIERS...
+
+git add .
+
+git commit -m "modification developpement"
+
+git push -u origin dev 
+* -u = upstream
+
+
+"MERGER" avec main :
+
+git checkout main
+
+git merge dev
+
+git push origin main
+
+
+SUPPRESSION DE BRANCHES
+Quand le commit est "pushé" dans le main
+
+En local (sur l'ordi) : 
+git branch -d menu
+*-d = delete
+
+***Possibilité de faire un "git log" pour constater que la suppression a eu lieu. (Pour quitter le log et revenir au terminal git Bash, appuyez sur la touche "q")
+
+Sur Github :
+git push origin --delete menu
+
+
+COMMANDE UTILE :
+
+git diff : Pour voir les différences entre le fichier enregistré sur l'ordi pas encore "commit" et le fichier en ligne sur Github avant de faire un commit.
+
+
+
+CORRIGER UNE ERREUR DE COMMIT
+
+Annuler le plus récent commit : 
+git revert HEAD~1
+***Pour sortir d'ici : ctrl+c
+
+
+***	SI erreur dans annulation...Possibilité de conflit
+	CONFLICT (content): Merge conflict in index.html 
+	error: could not revert 5bf8789... ajout menu
+		hint: After resolving the conflicts, mark them with
+		hint: "git add/rm <pathspec>", then run
+		hint: "git revert --continue".
+		hint: You can instead skip this commit with "git revert --skip".
+		hint: To abort and get back to the state before "git revert",
+		hint: run "git revert --abort".
+
+
+CORRIGER UNE ERREUR DE PUSH
+
+SI git push origin main :
+
+Faire :
+git log
+
+Pour :
+ALLER récupérer le # de commit du commit auquel on souhaite revenir.
+ex : 273329381b37596fe7a149b6d54b235032103e88
+***Possible que le ctrl+c soit remplacé par ctrl+insert dans terminal Git Bash.
+
+Appuyer sur la touche "q" pour sortir du log pour ervenir au terminal. 
+
+Dans le terminal :
+git revert 273329381b37596fe7a149b6d54b235032103e88
+
+
+
+
+
+
+
+;~J
+https://github.com/Vince2210001
+
+
+
+
+
